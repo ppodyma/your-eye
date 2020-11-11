@@ -7,6 +7,7 @@ import useStorage from './hooks/useStorage';
 import { app } from "./firebase/config"
 import ClientModal from './comps/ClientModal';
 import ClientsGrid from './comps/ClientsGrid';
+import "./app.css";
 
 function App() {
   const [selectedImg, setSelectedImg] = useState(null)
@@ -14,14 +15,25 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => app.auth().signOut()}>Sign out</button>
-      <button onClick={() => setOpenClientModal(true)}>Add client</button>
-      <Title/>
-      <UploadForm />
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      <ClientsGrid />
-      {openClientModal && <ClientModal setOpenClientModal={setOpenClientModal} />}
-      {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />}
+      <div className="app-nav">
+        <p>
+          Your Eye
+        </p>
+        <button className="log-out-button" onClick={() => app.auth().signOut()}>Sign out</button>
+      </div>
+      <div className="app-header">
+        <button className="add-filter-button">Tu filter</button>
+        <button className="add-client-button" onClick={() => setOpenClientModal(true)}>New</button>
+      </div>
+      <div className="app-filter">
+        <input type="text" placeholder="Wyszukaj badanie i pacjenta"></input>
+      </div>
+        {/* <Title/> */}
+        {/* <UploadForm /> */}
+        {/* <ImageGrid setSelectedImg={setSelectedImg} /> */}
+        <ClientsGrid />
+        {openClientModal && <ClientModal setOpenClientModal={setOpenClientModal} />}
+        {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />}
     </div>
   );
 }

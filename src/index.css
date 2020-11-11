@@ -7,14 +7,19 @@
 }
 
 /* base styles & title */
+
 body{
   font-family: "Noto Serif";
-  color: var(--secondary);
+  /* color: var(--secondary); */
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }
-.App{
+
+/* .App {
   max-width: 960px;
-  margin: 0 auto;
-}
+  margin: 0;
+} */
+
 .title h1{
   color: var(--primary);
   font-size: 1.2rem;

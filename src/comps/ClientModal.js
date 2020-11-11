@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { motion } from 'framer-motion'
 import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
 import useFirestore from '../hooks/useFirestore'
+import "./client-modal.css"
 
 
 const ClientModal = ({ setOpenClientModal }) => {
@@ -44,8 +45,10 @@ const ClientModal = ({ setOpenClientModal }) => {
                 initial={{ y: "-100vh"}}
                 animate={{ y: 0}}
             >
-                <div>
-                    Add Client
+                <div className="add-client-wrap">
+                    <p>
+                        Add Client
+                    </p>
                     <input type="text" placeholder="First Name" onChange={e => setfName(e.target.value)} />
                     <input type="text" placeholder="Last Name" onChange={e => setlName(e.target.value)} />
                     <input type="text" placeholder="Phone" onChange={e => setPhone(e.target.value)} />
