@@ -1,14 +1,15 @@
 import React from 'react'
-import useFirestore from '../hooks/useFirestore'
+import useFirestore from '../../hooks/useFirestore'
 import { motion } from 'framer-motion'
+import './ClientGrid.css'
 
 const ClientsGrid = () => {
     const { docs } = useFirestore('clients')
     console.log('CL', docs)
     return (
-        <div className="img-grid">
+        <div className="client-grid">
             {docs && docs.map(client => (
-                <motion.div className="img-wrap" key={client.id}
+                <motion.div className="client-wrap" key={client.id}
                     layout
                 >
                     <motion.div
@@ -16,9 +17,12 @@ const ClientsGrid = () => {
                         animate={{ opacity: 1}}
                         transition={{ delay: 1}}
                     >
-                    <div>
-
+                    <div className='client'>
+                        <div>
+                        <i class="fas fa-user-circle"></i>
+                        </div>
                         {client.firstName}
+                        {" "}
                         {client.lastName}
                         {/* {client.phone}
                         {client.email}

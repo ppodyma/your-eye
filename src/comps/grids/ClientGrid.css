@@ -1,0 +1,25 @@
+/* image grid styles */
+.client-grid {
+    display: flex;
+    flex-direction: column;
+}
+.client {
+    background-color: #fff;
+    height: 50px;
+    border-bottom: 1px solid #eef1f6;
+    padding: 0 20%;
+    display: flex;
+    align-items: center;
+}
+.client:hover {
+    background-color: #fbfbfd;
+    
+}
+.client-wrap i {
+    font-size: 25px;
+    margin-right: 10px;
+    color: #997abd;
+    align-self: center;
+}
+
+    

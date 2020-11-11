@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { motion } from 'framer-motion'
-import { projectStorage, projectFirestore, timestamp } from '../firebase/config'
-import useFirestore from '../hooks/useFirestore'
+import { projectStorage, projectFirestore, timestamp } from '../../firebase/config'
+import useFirestore from '../../hooks/useFirestore'
 import "./client-modal.css"
 
 
