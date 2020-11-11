@@ -13,8 +13,9 @@
 }
 .client:hover {
     background-color: #fbfbfd;
-    
+    cursor: pointer;
 }
+
 .client-wrap i {
     font-size: 25px;
     margin-right: 10px;

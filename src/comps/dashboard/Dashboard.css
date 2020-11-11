@@ -6,7 +6,7 @@
 .app-nav {
     box-sizing: border-box;
     width: 100%;
-    height: 50px;
+    height: 80px;
     background-color: #fff;
     border-bottom: 3px solid #9d7fc2;
     display: flex;
@@ -27,7 +27,7 @@
     outline: none;
     border: 1px solid #79589f;
     border-radius: 5px;
-    width: 70px;
+    width: 90px;
     height: 35px;
     color: #79589f;
     font-weight: bold;

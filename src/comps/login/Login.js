@@ -1,11 +1,13 @@
 import { app } from "../../firebase/config"
 import React, { useCallback, useContext } from "react"
 import { withRouter, Redirect } from "react-router"
+import { ReactComponent as Eye } from '../../assets/eye.svg'
 // import app from "./base.js"
+
 import { AuthContext } from "../../auth/Auth"
 import "./Login.css"
 
-const Login = ({ history }) => {
+const Login = ({ history, location }) => {
     const handleLogin = useCallback(
         async event => {
             event.preventDefault()
@@ -23,8 +25,10 @@ const Login = ({ history }) => {
     )
 
     const { currentUser } = useContext(AuthContext)
-
     if (currentUser) {
+        if (location.state && location.state.from) {
+            return <Redirect to={location.state.from} />
+        }
         return <Redirect to="/" />
     }
 
@@ -33,6 +37,11 @@ const Login = ({ history }) => {
         <div>
             <div className="login-section">
                 <div>
+                     <span style={{ width: '50px', display: 'inline-block'}}>
+                        {/* <Eye6 /> */}
+                        <Eye />
+                        {/* <Eye8 /> */}
+                    </span>
                     <h1>Log in to Your Eye</h1>
                 </div>
                 <form onSubmit={handleLogin}>

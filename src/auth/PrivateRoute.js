@@ -3,16 +3,22 @@ import { Route, Redirect } from "react-router-dom"
 import { AuthContext } from "./Auth"
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-    const {currentUser} = useContext(AuthContext)
+    const {currentUser, isLoading} = useContext(AuthContext)
     return (
         <Route
             {...rest}
-            render={routeProps => 
-                !!currentUser ? (
-                    <RouteComponent {...routeProps} />
-                ) : (
-                    <Redirect to={"/login"} />
+            render={(routeProps) => {
+                console.log('RRRR', routeProps)
+                console.log('isLoading', isLoading)
+                console.log('currentUser', currentUser)
+                return (
+                    isLoading || !!currentUser ? (
+                        <RouteComponent {...routeProps} />
+                    ) : (
+                        <Redirect to={{pathname: "/login", state: {from: routeProps.location}}} />
+                    )
                 )
+            }
             }
         />
     )

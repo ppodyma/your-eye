@@ -5,15 +5,24 @@ export const AuthContext = React.createContext()
 
 export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        app.auth().onAuthStateChanged(setCurrentUser)
+        try {
+            setIsLoading(true)
+            app.auth().onAuthStateChanged(setCurrentUser)
+        } catch (e) {
+            alert(e)
+        } finally {
+            setIsLoading(false)
+        }
     }, [])
 
     return (
         <AuthContext.Provider
             value={{
-                currentUser
+                currentUser,
+                isLoading
             }}
         >
             {children}
