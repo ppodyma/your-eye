@@ -5,7 +5,7 @@
 }
 
 .add-client-wrap {
-    height: 500px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

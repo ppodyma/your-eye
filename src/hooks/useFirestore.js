@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { projectFirestore } from '../firebase/config'
+import firebase from 'firebase'
 
-const useFirestore = (collection) => {
+const useFirestore = (collection, searchById) => {
     const [docs, setDocs] = useState([])
 
     useEffect(() => {
-        const unsub = projectFirestore.collection(collection)
-            .orderBy('createdAt', 'desc')
+        searchById ? projectFirestore.collection(collection)
+            .where(firebase.firestore.FieldPath.documentId(), '==', searchById)
             .onSnapshot((snap) => {
                 let documents = []
                 snap.forEach(doc => {
@@ -14,8 +15,15 @@ const useFirestore = (collection) => {
                 })
                 setDocs(documents)
             })
-
-        return () => unsub()
+        : projectFirestore.collection(collection)
+        .orderBy('createdAt', 'desc')
+        .onSnapshot((snap) => {
+            let documents = []
+            snap.forEach(doc => {
+                documents.push({ ...doc.data(), id: doc.id })
+            })
+            setDocs(documents)
+        })
     }, [collection])
 
     return { docs }

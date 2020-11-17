@@ -8,9 +8,6 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
         <Route
             {...rest}
             render={(routeProps) => {
-                console.log('RRRR', routeProps)
-                console.log('isLoading', isLoading)
-                console.log('currentUser', currentUser)
                 return (
                     isLoading || !!currentUser ? (
                         <RouteComponent {...routeProps} />
